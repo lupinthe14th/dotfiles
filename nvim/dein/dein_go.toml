@@ -1,50 +1,67 @@
-[[plugins]]
-repo = 'fatih/vim-go'
-on_ft = 'go'
-hook_add = '''
-  let g:go_fmt_command = "goimports"
-  let g:go_def_mapping_enabled = 0
-  let g:go_doc_keywordprg_enabled = 0
-'''
+# [[plugins]]
+# repo = 'fatih/vim-go'
+# on_ft = 'go'
+# hook_add = '''
+#   let g:go_fmt_command = "goimports"
+#   let g:go_def_mapping_enabled = 0
+#   let g:go_doc_keywordprg_enabled = 0
+# '''
 
-# [[plugins]] # コード補完
-# repo = 'Shougo/deoplete.nvim'
-# # プラグインが dein.vim によって追加されたとき実行
-# hook_add = 'let g:deoplete#enable_at_startup = 1'
-# 
-[[plugins]]
-repo = 'prabirshrestha/async.vim'
+[[plugins]] # コード補完
+repo = 'Shougo/deoplete.nvim'
+# プラグインが dein.vim によって追加されたとき実行
+hook_add = 'let g:deoplete#enable_at_startup = 1'
+
+# [[plugins]]
+# repo = 'prabirshrestha/async.vim'
  
+[[plugins]]
+repo = 'mattn/vim-goimports'
+
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 hook_add = '''
-if executable('gopls')
+if executable('golsp')
   augroup LspGo
     au!
     autocmd User lsp_setup call lsp#register_server({
         \ 'name': 'go-lang',
-        \ 'cmd': {server_info->['gopls']},
+        \ 'cmd': {server_info->['bingo', '-mode', 'stdio']},
         \ 'whitelist': ['go'],
-        \ 'workspace_config': {'gopls': {
-        \     'staticcheck': v:true,
-        \     'completeUnimported': v:true,
-        \     'caseSensitiveCompletion': v:true,
-        \     'usePlaceholders': v:true,
-        \     'completionDocumentation': v:true,
-        \     'watchFileChanges': v:true,
-        \     'hoverKind': 'SingleLine',
-        \   }},
         \ })
     autocmd FileType go setlocal omnifunc=lsp#complete
-    autocmd FileType go nmap <buffer> gd <plug>(lsp-definition)
-    autocmd FileType go nmap <buffer> ,n <plug>(lsp-next-error)
-    autocmd FileType go nmap <buffer> ,p <plug>(lsp-previous-error)
   augroup END
 endif
 '''
 
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete.vim'
+# hook_add = '''
+# if executable('gopls')
+#   augroup LspGo
+#     au!
+#     autocmd User lsp_setup call lsp#register_server({
+#         \ 'name': 'go-lang',
+#         \ 'cmd': {server_info->['gopls']},
+#         \ 'whitelist': ['go'],
+#        \ 'workspace_config': {'gopls': {
+#        \     'staticcheck': v:true,
+#        \     'completeUnimported': v:true,
+#        \     'caseSensitiveCompletion': v:true,
+#        \     'usePlaceholders': v:true,
+#        \     'completionDocumentation': v:true,
+#        \     'watchFileChanges': v:true,
+#        \     'hoverKind': 'SingleLine',
+#        \   }},
+#         \ })
+#     autocmd FileType go setlocal omnifunc=lsp#complete
+#     autocmd FileType go nmap <buffer> gd <plug>(lsp-definition)
+#     autocmd FileType go nmap <buffer> ,n <plug>(lsp-next-error)
+#     autocmd FileType go nmap <buffer> ,p <plug>(lsp-previous-error)
+#   augroup END
+# endif
+# '''
 
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete-lsp.vim'
+# [[plugins]]
+# repo = 'prabirshrestha/asyncomplete.vim'
+# 
+# [[plugins]]
+# repo = 'prabirshrestha/asyncomplete-lsp.vim'

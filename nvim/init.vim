@@ -20,8 +20,8 @@ if dein#load_state('~/.cache/dein')
 
  let g:rc_dir    = expand('~/.config/nvim/dein')
  call dein#load_toml(g:rc_dir . '/dein.toml' ,  {'lazy': 0})
- call dein#load_toml(g:rc_dir . '/dein_python.toml', {'lazy': 0})
- call dein#load_toml(g:rc_dir . '/dein_go.toml', {'lazy': 0})
+" call dein#load_toml(g:rc_dir . '/dein_python.toml', {'lazy': 0})
+" call dein#load_toml(g:rc_dir . '/dein_go.toml', {'lazy': 0})
  call dein#end()
  call dein#save_state()
 endif
@@ -33,5 +33,5 @@ endif
 filetype plugin indent on
 syntax enable
 "End dein Scripts-------------------------
-autocmd FileType vue syntax sync fromstart
-autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
+"autocmd FileType vue syntax sync fromstart
+"autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
