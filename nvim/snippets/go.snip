@@ -1,0 +1,44 @@
+snippet unionfind
+alias uf
+abbr Union Find tree library
+options head
+    type unionFind struct {
+    	d []int
+    }
+    
+    func newUnionFind(n int) unionFind {
+    	d := make([]int, n)
+    	for i := 0; i < n; i++ {
+    		d[i] = -1
+    	}
+    	return unionFind{d: d}
+    }
+    
+    func (uf unionFind) find(x int) int {
+    	if uf.d[x] < 0 {
+    		return x
+    	}
+    	uf.d[x] = uf.find(uf.d[x])
+    	return uf.d[x]
+    }
+    
+    func (uf unionFind) unite(x, y int) bool {
+    	x, y = uf.find(x), uf.find(y)
+    	if x == y {
+    		return false
+    	}
+    	if uf.d[x] > uf.d[y] {
+    		x, y = y, x
+    	}
+    	uf.d[x] += uf.d[y]
+    	uf.d[y] = x
+    	return true
+    }
+    
+    func (uf unionFind) same(x, y int) bool {
+    	return uf.find(x) == uf.find(y)
+    }
+    
+    func (uf unionFind) size(x int) int {
+    	return -uf.d[uf.find(x)]
+    }

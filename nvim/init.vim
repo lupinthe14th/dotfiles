@@ -1,4 +1,5 @@
 set nopaste
+let g:python3_host_prog = '/Users/hideoSuzuki/.pyenv/versions/neovim3/bin/python'
 "dein Scripts-----------------------------
 if &compatible
  set nocompatible
@@ -24,7 +25,7 @@ endif
 
 " Required:
 filetype plugin indent on
-syntax enable
+"syntax enable
 " If you want to install not installed plugins on startup.
 if dein#check_install()
   call dein#install()

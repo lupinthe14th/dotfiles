@@ -8,6 +8,7 @@ fish/fishd.*
 fish/fishfile
 fish/functions/
 fisherman/
+fisher/
 gocode/
 gtk-2.0/
 heroku/

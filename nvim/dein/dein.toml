@@ -4,10 +4,46 @@ repo = 'vim-airline/vim-airline-themes'
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'badwolf'
+let g:airline_theme='molokai'
+let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
+'''
+
+[[plugins]]
+repo = 'tomasr/molokai'
+hook_add = '''
+colorscheme molokai
+'''
+
+# using buf and textlint
+[[plugins]]
+repo = 'dense-analysis/ale'
+hook_add = '''
+let g:ale_linters = {
+ \  'markdown': ['textlint']
+ \}
+'''
+[[plugins]]
+repo = 'bufbuild/vim-buf'
+hook_add = '''
+let g:ale_linters = {
+\   'proto': ['buf-check-lint',],
+\}
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_linters_explicit = 1
+'''
+[[plugins]]
+repo = 'uarun/vim-protobuf'
+
+# editerconfig
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+
+# Ack
+[[plugins]]
+repo = 'mileszs/ack.vim'
+hook_add = '''
+let g:ackprg = 'ag --vimgrep'
 '''
 
 # Elixir
@@ -34,6 +70,7 @@ repo = 'prabirshrestha/asyncomplete-lsp.vim'
 repo = 'prabirshrestha/vim-lsp'
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
+merged = 0
 hook_add = '''
 if empty(globpath(&rtp, 'autoload/lsp.vim'))
   finish
@@ -42,9 +79,11 @@ endif
 function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
   setlocal signcolumn=yes
-  nmap <buffer> gd <plug>(lsp-definition)
-  nmap <buffer> <f2> <plug>(lsp-rename)
-  inoremap <expr> <cr> pumvisible() ? "\<c-y>\<cr>" : "\<cr>"
+  nmap <buffer> gd <Plug>(lsp-definition)
+  nmap <buffer> <f2> <Plug>(lsp-rename)
+  nmap <buffer> <C-n> <Plug>(lsp-next-error)
+  nmap <buffer> <C-p> <Plug>(lsp-previous-error)
+  " inoremap <expr> <CR> pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
 endfunction
 
 augroup lsp_install
@@ -53,22 +92,19 @@ augroup lsp_install
 augroup END
 command! LspDebug let lsp_log_verbose=1 | let lsp_log_file = expand('~/lsp.log')
 
-let g:lsp_diagnostics_enabled = 0
-let g:lsp_diagnostics_echo_cursor = 0
-let g:lsp_text_edit_enabled = 0
-let g:lsp_fold_enabled = 0
+
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+
+let g:lsp_signs_enabled = 1
+let g:lsp_signs_error = {'text': '⨉'}
+let g:lsp_signs_warning = {'text': '⚠'}
+let g:lsp_signs_information = {'text': '!'}
+let g:lsp_signs_hint = {'text': '?'} "
 '''
 
-# let g:lsp_signs_enabled = 1
-# let g:lsp_diagnostics_echo_cursor = 1
-# let g:lsp_signs_error = {'text': '⨉'}
-# let g:lsp_signs_warning = {'text': '⚠'}
-# let g:lsp_signs_information = {'text': '!'}
-# let g:lsp_signs_hint = {'text': '?'} "
-# '''
-
-[[plugins]]
-repo = 'mattn/vim-lsp-icons'
+# [[plugins]]
+# repo = 'mattn/vim-lsp-icons'
 [[plugins]]
 repo = 'mattn/vim-goimports'
 # [[plugins]]
@@ -81,3 +117,33 @@ repo = 'mattn/vim-goimports'
 repo = 'thomasfaingnaert/vim-lsp-snippets'
 [[plugins]]
 repo = 'thomasfaingnaert/vim-lsp-neosnippet'
+hook_add = '''
+imap <expr> <Tab> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<Tab>"
+smap <expr> <Tab> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<Tab>"
+'''
+
+# conflict
+[[plugins]]
+repo = 'rhysd/conflict-marker.vim'
+hook_add = '''
+let g:conflict_marker_enable_highlight = 0
+" disable the default highlight group
+let g:conflict_marker_highlight_group = ''
+
+" Include text after begin and end markers
+let g:conflict_marker_begin = '^<<<<<<< .*$'
+let g:conflict_marker_end   = '^>>>>>>> .*$'
+
+highlight ConflictMarkerBegin guibg=#2f7366
+highlight ConflictMarkerOurs guibg=#2e5049
+highlight ConflictMarkerTheirs guibg=#344f69
+highlight ConflictMarkerEnd guibg=#2f628e
+'''
+
+# Snippets are separated from the engine. Add this if you want them:
+[[plugins]]
+repo =  'honza/vim-snippets'
+hook_add = '''
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
+'''
