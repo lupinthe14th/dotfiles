@@ -1,0 +1,26 @@
+snippet functestdriventable
+alias tdd
+abbr func Test... (t *testing.T) { tests := {...}{...} for {t.Run(){...}} ... }
+options head
+  func Test${1:Solution} (${2:t *testing.T}) {
+    t.Parallel()
+    type in struct {
+      ${3:n}, ${4:m} ${5:int}
+    }
+    tests := []struct {
+      in in
+      want ${6:int}
+    }{
+        {in: in{$3: ${7}, $4: ${8}}, want: ${9}},
+    }
+    for i, tt := range tests {
+      i,tt := i,tt
+      t.Run(fmt.Sprint(i), func(t *testing.T){
+        t.Parallel()
+        got := $1(tt.in.$3,tt.in.$4)
+        if got != tt.want {
+          t.Fatalf("in: %v got: %v want: %v", tt.in, got, tt.want)
+        }
+      })
+    }
+  }

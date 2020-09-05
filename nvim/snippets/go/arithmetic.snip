@@ -1,0 +1,21 @@
+snippet imax                            
+alias imax                              
+abbr max := func(x, y int) int { ... }  
+options head                            
+  max := func(x, y int) int {
+    if x > y {
+      return x
+    }
+    return y
+    }                                     
+                                        
+snippet imin                            
+alias imin                              
+abbr min := func(x, y int) int { ... }  
+options head                            
+  min := func(x, y int) int {
+    if x < y {
+      return x
+    }
+    return y
+  }
