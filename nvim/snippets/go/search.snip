@@ -1,0 +1,15 @@
+snippet dfs
+alias dfs
+abbr dfs := func(i,j int) { ... }
+options head
+  var dfs func(i, j, c int)
+  dfs = func(i, j, c int) {
+    if i < 0 || j < 0 || i >= row || j >= col {
+      return
+    }
+    dfs(i+1, j, c)
+    dfs(i-1, j, c)
+    dfs(i, j+1, c)
+    dfs(i, j-1, c)
+  }
+  dfs(0,0,0)
