@@ -9,7 +9,7 @@ options head
     }
 
 snippet preorderTraversal
-alias ptra
+alias pretra
 abbr Binary Tree Preorder Traversal
 options head
   out := make([]int,0)
@@ -19,7 +19,7 @@ options head
     if $1 == nil {
       return
     }
-    out = apend(out, $1.Val)
+    out = append(out, $1.Val)
     if $1.Left != nil {
       traversal($1.Left)
     }
