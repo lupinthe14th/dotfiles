@@ -118,8 +118,13 @@ repo = 'thomasfaingnaert/vim-lsp-snippets'
 [[plugins]]
 repo = 'thomasfaingnaert/vim-lsp-neosnippet'
 hook_add = '''
-imap <expr> <Tab> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<Tab>"
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 smap <expr> <Tab> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<Tab>"
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 '''
 
 # conflict
@@ -144,6 +149,6 @@ highlight ConflictMarkerEnd guibg=#2f628e
 [[plugins]]
 repo =  'honza/vim-snippets'
 hook_add = '''
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
 '''
