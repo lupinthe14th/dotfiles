@@ -1,0 +1,57 @@
+snippet trieTree
+alias trie
+abbr trie tree
+options head
+    type trieNode struct {
+      ${1} ${2}
+      chldren [26]*trieNode
+    }
+
+    root := &trieNode{}
+
+    for _, ${3} := range $1 {
+      node := root
+      for _, c := range $3 {
+        if node.children[c-'a'] == nil {
+          node.children[c-'a'] = &trieNode{}
+        }
+        node = node.children[c-'a']
+      }
+      node.$1 = $3
+    }
+
+    var dfs func(i, j int, node *trieNode)
+    dfs = func(i, j int, node *trieNode) {
+      if i < 0 || j < 0 || i == len(${4}) || j == len($4[0]) {
+        return
+      }
+
+      c := $4[i][j]
+
+      if c == '#' || node.children[c-'a'] == nil {
+        return
+      }
+
+      node = node.children[c-'a']
+
+      if node.$1 != "" {
+        out = append(out, node.$1)
+        node.$1 = ${5}
+      }
+
+      $4[i][j] = '#'
+
+      dfs(i+1, j, node)
+      dfs(i-1, j, node)
+      dfs(i, j+1, node)
+      dfs(i, j-1, node)
+      $4[i][j] = c
+    }
+
+    for i := 0; i < len($4); i++ {
+      for j := 0;j < len($4[i]); j++ {
+        dfs(i, j, root)
+      }
+    }
+
+
