@@ -167,3 +167,13 @@ repo = 'hashivim/vim-terraform'
 hook_add = '''
 let g:terraform_fmt_on_save = 1
 '''
+
+# saltstack
+# ref: https://salt.tips/text-editor-plugins-for-salt-states-and-yaml-jinja/#vim
+[[plugins]]
+repo = 'saltstack/salt-vim'
+[[plugins]]
+repo = 'Glench/Vim-Jinja2-Syntax'
+hook_add = '''
+let g:sls_use_jinja_syntax = 1
+'''

@@ -18,8 +18,8 @@ set -x PATH $PATH $GOPATH/bin
 # nodebrew
 # set -x PATH $HOME/.nodebrew/current/bin $PATH 
 
-# added by pipsi (https://github.com/mitsuhiko/pipsi)
-# set -x PATH /Users/hideoSuzuki/.local/bin $PATH
+# added by git-subcommand
+set -x PATH $HOME/.local/bin $PATH
 
 # pyenv
 # status --is-interactive; and source (pyenv init -|psub)
@@ -41,5 +41,11 @@ set -g fish_user_paths "/usr/local/opt/openssl@1.1/bin" $fish_user_paths
 set -g fish_user_paths "/usr/local/opt/ncurses/bin" $fish_user_paths
 
 # openjdk
-set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
-set -gx CPPFLAGS "-I/usr/local/opt/openjdk/include"
+# set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
+# set -gx CPPFLAGS "-I/usr/local/opt/openjdk/include"
+rvm default
+
+# jEnv
+set -x JENV_ROOT /usr/local/opt/jenv
+set PATH $HOME/.jenv/bin $PATH
+status --is-interactive; and source (jenv init -|psub)
