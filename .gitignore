@@ -18,3 +18,5 @@ nvim/.netrwhist
 nvim/dein/cache_nvim
 nvim/dein/state_nvim.vim
 yarn/
+gh/
+jgit/
