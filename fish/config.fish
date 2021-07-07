@@ -3,8 +3,8 @@
 set -x LANG ja_JP.UTF-8
 # nvim 設定
 export EDITOR=nvim
-alias vi='nvim'
-alias vim='nvim'
+alias vi='vim'
+alias vim='vim'
 alias rm='rm -i'
 alias bfg='java -jar ~/.local/lib/bfg.jar'
 

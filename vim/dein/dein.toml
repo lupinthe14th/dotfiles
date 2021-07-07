@@ -151,7 +151,7 @@ highlight ConflictMarkerEnd guibg=#2f628e
 repo =  'honza/vim-snippets'
 hook_add = '''
 " Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
+let g:neosnippet#snippets_directory='~/.config/vim/snippets'
 '''
 
 # Vuejs

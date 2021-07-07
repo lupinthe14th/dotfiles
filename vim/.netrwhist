@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/Users/hideoSuzuki/go/src/github.com/lupinthe14th/god/pkg/cmd/root'
+let g:netrw_dirhist_3='/Users/hideoSuzuki/Documents/git/apache/httpd/conf/extra'
+let g:netrw_dirhist_2='/Users/hideoSuzuki/Documents/git/apache/httpd/conf'
+let g:netrw_dirhist_1='/Users/hideoSuzuki/Documents/git/apache/httpd/conf/original'
+let g:netrw_dirhist_0='/Users/hideoSuzuki/Documents/git/apache/httpd/conf/original/extra'
+let g:netrw_dirhist_9='/Users/hideoSuzuki/Documents/git/apache/httpd/conf/original'
+let g:netrw_dirhist_8='/Users/hideoSuzuki/Documents/git/ptodo/modules/iam_role'
+let g:netrw_dirhist_7='/Users/hideoSuzuki/Documents/git/ptodo/db/initdb/00_create_database.sql'
+let g:netrw_dirhist_6='/Users/hideoSuzuki/Documents/git/ptodo/h2o/etc/h2o'
+let g:netrw_dirhist_5='/Users/hideoSuzuki/Documents/git/ptodo/h2o/etc'

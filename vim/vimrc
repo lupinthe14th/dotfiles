@@ -1,5 +1,4 @@
 set nopaste
-let g:python3_host_prog = '/Users/hideoSuzuki/.pyenv/versions/neovim3/bin/python'
 "dein Scripts-----------------------------
 if &compatible
  set nocompatible
@@ -17,7 +16,7 @@ if dein#load_state('~/.cache/dein')
  call dein#add('Shougo/neosnippet.vim')
  call dein#add('Shougo/neosnippet-snippets')
 
- let g:rc_dir    = expand('~/.config/nvim/dein')
+ let g:rc_dir    = expand('~/.config/vim/dein')
  call dein#load_toml(g:rc_dir . '/dein.toml' ,  {'lazy': 0})
  call dein#end()
  call dein#save_state()
