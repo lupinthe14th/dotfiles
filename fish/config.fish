@@ -1,8 +1,8 @@
 ########################################
 # LANG
 set -x LANG ja_JP.UTF-8
-# nvim 設定
-export EDITOR=nvim
+# vim 設定
+export EDITOR=vim
 alias vi='vim'
 alias vim='vim'
 alias rm='rm -i'
