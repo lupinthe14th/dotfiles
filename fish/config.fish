@@ -8,6 +8,10 @@ alias vim='vim'
 alias rm='rm -i'
 alias bfg='java -jar ~/.local/lib/bfg.jar'
 
+# lima
+#set -x DOCKER_HOST unix:///Users/hideoSuzuki/.lima/docker/sock/docker.sock 
+#set -x DOCKER_HOST ssh://lima-default:60022
+
 # fisherman
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
@@ -49,3 +53,6 @@ rvm default
 set -x JENV_ROOT /usr/local/opt/jenv
 set PATH $HOME/.jenv/bin $PATH
 status --is-interactive; and source (jenv init -|psub)
+
+# Rust
+set -g fish_user_paths $fish_user_paths "$HOME/.cargo/bin"
